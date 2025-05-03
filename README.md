@@ -2,28 +2,30 @@
 
 A customizable keyboard shortcut application for Windows that provides quick access to files, folders, applications, and web links.
 
+> ⚠️ **Note**: This project is currently in beta. No official releases are available yet.
+
 ## Features
 
-- 8 customizable shortcut buttons
-- Support for files, folders, executables, and web links
-- Administrator privilege support
-- Multiple profiles (3 profiles with 8 shortcuts each)
-- Dark/Light theme support
-- System tray integration
-- Global keyboard shortcuts (Left Shift + Left Alt + Left Ctrl + A-H)
+- 🔢 8 customizable shortcut buttons
+- 📁 Support for files, folders, executables, and web links
+- 🛡️ Administrator privilege support
+- 👥 Multiple profiles (3 profiles with 8 shortcuts each)
+- 🌓 Dark/Light theme support
+- 🔽 System tray integration
+- ⌨️ Global keyboard shortcuts (Left Shift + Left Alt + Left Ctrl + A-H)
 
-## Requirements
+## 🔧 Requirements
 
 - Windows 10/11
 - .NET 6.0 or later
 
-## Installation
-
+## 📥 Installation
+**Coming Soon**
 1. Download the latest release from the [Releases](https://github.com/USERNAME/ShortcutKeyboardApp/releases) page
 2. Extract the ZIP file
 3. Run `ShortcutKeyboardApp.exe`
 
-## Usage
+## 🚀 Usage
 
 1. Click on any button to configure its action
 2. Choose between File, Folder, Executable, or Web Link
@@ -49,3 +51,10 @@ Examples of used icons:
 - [Settings Icon](https://www.svgrepo.com/svg/528335/keyboard) (Solar Bold Duotone Icons)
 - 
 > Modifications: Colors and sizes have been adapted to fit the project's design system.
+
+### License
+This project is licensed under the BSD 2-Clause License - see the LICENSE file for details.
+
+### 🗺️ Roadmap
+- Implement custom keyboard combinations
+- Add support for more keys 
