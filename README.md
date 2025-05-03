@@ -49,7 +49,7 @@ This project uses icons from two **Solar Icons** collections, available on [SVG 
 Examples of used icons:
 - [Keyboard Icon](https://www.svgrepo.com/svg/527155/keyboard) (from Line Duotone collection)
 - [Settings Icon](https://www.svgrepo.com/svg/527439/settings) (from Line Duotone collection)
-- 
+-   
 > Modifications: Colors and sizes have been adapted to fit the project's design system.
 
 ### License
