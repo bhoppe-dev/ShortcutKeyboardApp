@@ -13,6 +13,13 @@ namespace ShortcutKeyboardApp
 
         public string DisplayText { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the ConfigurationWindow class.
+        /// </summary>
+        /// <param name="currentPath">The current path or URL configured for the button.</param>
+        /// <param name="currentRunAsAdmin">Whether the current action runs as administrator.</param>
+        /// <param name="currentDisplayText">The current display text for the button.</param>
+        /// <param name="isDarkMode">Whether dark mode is currently enabled.</param>
         public ConfigurationWindow(string currentPath, bool currentRunAsAdmin, string currentDisplayText, bool isDarkMode)
         {
             InitializeComponent();
@@ -38,6 +45,12 @@ namespace ShortcutKeyboardApp
             ApplyTheme(isDarkMode);
         }
 
+        /// <summary>
+        /// Handles the checked event for action type radio buttons.
+        /// Updates UI elements based on the selected action type.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (BrowseButton != null && AdminCheckBox != null) // Check if controls are initialized
@@ -53,6 +66,10 @@ namespace ShortcutKeyboardApp
             }
         }
 
+        /// <summary>
+        /// Applies the specified theme to the window.
+        /// </summary>
+        /// <param name="isDarkMode">True to apply dark theme, false to apply light theme.</param>
         private void ApplyTheme(bool isDarkMode)
         {
             // Get the current application
@@ -71,6 +88,12 @@ namespace ShortcutKeyboardApp
             app.Resources.MergedDictionaries.Add(resourceDict);
         }
 
+        /// <summary>
+        /// Handles the Browse button click event.
+        /// Opens appropriate dialog based on selected action type (file, executable, or folder).
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
             if (RadioFile.IsChecked == true || RadioExecutable.IsChecked == true)
@@ -96,6 +119,12 @@ namespace ShortcutKeyboardApp
             }
         }
 
+        /// <summary>
+        /// Handles the OK button click event.
+        /// Validates the input and sets the dialog result properties.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
             if (RadioLink.IsChecked == true)
@@ -158,12 +187,23 @@ namespace ShortcutKeyboardApp
             Close();
         }
 
+        /// <summary>
+        /// Validates whether a string is a valid URL.
+        /// </summary>
+        /// <param name="url">The URL string to validate.</param>
+        /// <returns>True if the URL is valid, false otherwise.</returns>
         private bool IsValidUrl(string url)
         {
             return Uri.TryCreate(url, UriKind.Absolute, out Uri uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
 
+        /// <summary>
+        /// Handles the Cancel button click event.
+        /// Closes the dialog without saving changes.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

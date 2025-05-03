@@ -24,17 +24,32 @@ namespace ShortcutKeyboardApp
 
             UpdateCheckBoxStates();
         }
-
+        /// <summary>
+        /// Handles the check/uncheck event for the Start Minimized checkbox.
+        /// Updates checkbox states to ensure mutual exclusivity with Start as Tray Icon option.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void StartMinimizedCheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
             UpdateCheckBoxStates();
         }
 
+        /// <summary>
+        /// Handles the check/uncheck event for the Start as Tray Icon checkbox.
+        /// Updates checkbox states to ensure mutual exclusivity with Start Minimized option.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void StartAsTrayIconCheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
             UpdateCheckBoxStates();
         }
 
+        /// <summary>
+        /// Updates the enabled/disabled states of startup option checkboxes.
+        /// Ensures that Start Minimized and Start as Tray Icon options are mutually exclusive.
+        /// </summary>
         private void UpdateCheckBoxStates()
         {
             if (StartMinimizedCheckBox.IsChecked == true)
@@ -54,11 +69,21 @@ namespace ShortcutKeyboardApp
             }
         }
 
+        /// <summary>
+        /// Handles the check/uncheck event for the Dark Mode checkbox.
+        /// Immediately applies the selected theme to the application.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void DarkModeCheckBox_CheckChanged(object sender, RoutedEventArgs e)
         {
             ApplyTheme(DarkModeCheckBox.IsChecked == true);
         }
 
+        /// <summary>
+        /// Applies the specified theme to the application.
+        /// </summary>
+        /// <param name="isDarkMode">True to apply dark theme, false to apply light theme.</param>
         private void ApplyTheme(bool isDarkMode)
         {
             // Get the current application
@@ -77,6 +102,12 @@ namespace ShortcutKeyboardApp
             app.Resources.MergedDictionaries.Add(resourceDict);
         }
 
+        /// <summary>
+        /// Handles the Save button click event.
+        /// Saves the current settings and closes the dialog with a positive result.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Settings.StartMinimized = StartMinimizedCheckBox.IsChecked ?? false;
@@ -86,6 +117,12 @@ namespace ShortcutKeyboardApp
             Close();
         }
 
+        /// <summary>
+        /// Handles the Cancel button click event.
+        /// Restores the original theme and closes the dialog with a negative result.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             // Restore original settings

@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace ShortcutKeyboardApp
 {
+    /// <summary>
+    /// Provides low-level keyboard hook functionality to capture global keyboard events.
+    /// </summary>
     public class KeyboardHook
     {
         private const int WH_KEYBOARD_LL = 13;
@@ -20,7 +23,10 @@ namespace ShortcutKeyboardApp
         private static bool _isLeftControlPressed = false;
 
         public static event EventHandler<MacroKeyPressedEventArgs> MacroKeyPressed;
-
+        
+        /// <summary>
+        /// Sets up the low-level keyboard hook to capture global keyboard events.
+        /// </summary>
         public static void SetHook()
         {
             Debug.WriteLine("Setting up keyboard hook");
@@ -28,11 +34,21 @@ namespace ShortcutKeyboardApp
             Debug.WriteLine($"Hook ID: {_hookID}");
         }
 
+        /// <summary>
+        /// Removes the keyboard hook from the system.
+        /// </summary>
         public static void UnhookWindowsHookEx()
         {
             UnhookWindowsHookEx(_hookID);
         }
 
+        /// <summary>
+        /// Callback function for the keyboard hook that processes keyboard events.
+        /// </summary>
+        /// <param name="nCode">A code that indicates how to process the message.</param>
+        /// <param name="wParam">The keyboard message identifier.</param>
+        /// <param name="lParam">A pointer to a KBDLLHOOKSTRUCT structure.</param>
+        /// <returns>If nCode is less than zero, the hook procedure must return the value returned by CallNextHookEx.</returns>
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0)
@@ -90,6 +106,11 @@ namespace ShortcutKeyboardApp
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
         }
 
+        /// <summary>
+        /// Maps virtual key codes to macro key indices.
+        /// </summary>
+        /// <param name="vkCode">The virtual key code to map.</param>
+        /// <returns>The macro key index (0-7) or -1 if the key is not mapped.</returns>
         private static int GetMacroKeyIndex(int vkCode)
         {
             switch (vkCode)
@@ -122,10 +143,17 @@ namespace ShortcutKeyboardApp
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
     }
 
+    /// <summary>
+    /// Provides data for the MacroKeyPressed event.
+    /// </summary>
     public class MacroKeyPressedEventArgs : EventArgs
     {
         public int KeyIndex { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the MacroKeyPressedEventArgs class.
+        /// </summary>
+        /// <param name="keyIndex">The index of the macro key that was pressed (0-7).</param>
         public MacroKeyPressedEventArgs(int keyIndex)
         {
             KeyIndex = keyIndex;
