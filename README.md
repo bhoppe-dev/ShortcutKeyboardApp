@@ -7,7 +7,7 @@ A customizable keyboard shortcut application for Windows that provides quick acc
 <p align="center">
   <img src="01_Pictures/Shortcut_Keyboard_App.png" width="600">
   <br>
-  <em>Shortcut Keyboard PCB</em>
+  <em>ShortcutKeyboard-App Main Window</em>
 </p>
 
 ## Features
