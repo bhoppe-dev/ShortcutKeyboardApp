@@ -4,6 +4,12 @@ A customizable keyboard shortcut application for Windows that provides quick acc
 
 > ⚠️ **Note**: This project is currently in beta. No official releases are available yet.
 
+<p align="center">
+  <img src="01_Pictures/Shortcut_Keyboard_App.png" width="600">
+  <br>
+  <em>Shortcut Keyboard PCB</em>
+</p>
+
 ## Features
 
 - 🔢 8 customizable shortcut buttons
