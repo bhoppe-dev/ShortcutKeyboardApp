@@ -22,9 +22,14 @@ namespace ShortcutKeyboardApp
         public const string BuildType = "beta";
 
         /// <summary>
+        /// Gets the name of the creator
+        /// </summary>
+        public const string Name = " © Benjamin Hoppe";
+
+        /// <summary>
         /// Gets the full version string including build type.
         /// </summary>
-        public static string FullVersion => $"{Version}-{BuildType}";
+        public static string FullVersion => $"{Version}-{BuildType} {Name}";
 
         /// <summary>
         /// Gets the application title with version.
