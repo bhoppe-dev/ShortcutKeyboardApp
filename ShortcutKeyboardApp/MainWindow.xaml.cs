@@ -159,14 +159,26 @@ namespace ShortcutKeyboardApp
         {
             if (File.Exists(SETTINGS_FILE_NAME))
             {
-                string json = File.ReadAllText(SETTINGS_FILE_NAME);
-                appSettings = JsonSerializer.Deserialize<AppSettings>(json);
+                try
+                {
+                    string json = File.ReadAllText(SETTINGS_FILE_NAME);
+                    appSettings = JsonSerializer.Deserialize<AppSettings>(json) ?? new AppSettings();                    
+                    if (appSettings.MacroButtonCount < 1 || appSettings.MacroButtonCount > 16)
+                    {
+                        appSettings.MacroButtonCount = 8; // Fallback 
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error loading app settings: {ex.Message}");
+                    appSettings = new AppSettings();
+                }
             }
             else
             {
                 appSettings = new AppSettings();
             }
-        }
+        }       
 
         /// <summary>
         /// Saves the current application settings to the settings file.
@@ -526,5 +538,7 @@ namespace ShortcutKeyboardApp
         public bool StartMinimized { get; set; }
         public bool StartAsTrayIcon { get; set; }
         public bool DarkModeEnabled { get; set; }
+
+        public int MacroButtonCount { get; set; } = 8; // Standard number of keys on the shortcut keyboard
     }
 }

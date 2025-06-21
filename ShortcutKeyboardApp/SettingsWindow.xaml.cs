@@ -15,14 +15,31 @@ namespace ShortcutKeyboardApp
             {
                 StartMinimized = currentSettings.StartMinimized,
                 StartAsTrayIcon = currentSettings.StartAsTrayIcon,
-                DarkModeEnabled = currentSettings.DarkModeEnabled
+                DarkModeEnabled = currentSettings.DarkModeEnabled,
+                MacroButtonCount = currentSettings.MacroButtonCount
             };
 
             StartMinimizedCheckBox.IsChecked = Settings.StartMinimized;
             StartAsTrayIconCheckBox.IsChecked = Settings.StartAsTrayIcon;
             DarkModeCheckBox.IsChecked = Settings.DarkModeEnabled;
+            MacroButtonCountSlider.Value = Settings.MacroButtonCount;
+            MacroButtonCountLabel.Text = Settings.MacroButtonCount.ToString();
 
             UpdateCheckBoxStates();
+        }
+
+        /// <summary>
+        /// Handles the value changed event for the Macro Button Count slider.
+        /// Updates the label to display the current value.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
+        private void MacroButtonCountSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (MacroButtonCountLabel != null)
+            {
+                MacroButtonCountLabel.Text = ((int)e.NewValue).ToString();
+            }
         }
         /// <summary>
         /// Handles the check/uncheck event for the Start Minimized checkbox.
@@ -113,6 +130,8 @@ namespace ShortcutKeyboardApp
             Settings.StartMinimized = StartMinimizedCheckBox.IsChecked ?? false;
             Settings.StartAsTrayIcon = StartAsTrayIconCheckBox.IsChecked ?? false;
             Settings.DarkModeEnabled = DarkModeCheckBox.IsChecked ?? false;
+            Settings.MacroButtonCount = (int)MacroButtonCountSlider.Value;
+
             DialogResult = true;
             Close();
         }
