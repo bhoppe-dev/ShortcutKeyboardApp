@@ -2,8 +2,6 @@
 
 A customizable keyboard shortcut application for Windows that provides quick access to files, folders, applications, and web links.
 
-> ⚠️ **Note**: This project is currently in beta. No official releases are available yet.
-
 <p align="center">
   <img src="01_Pictures/Shortcut_Keyboard_App.png" width="600">
   <br>
@@ -23,11 +21,10 @@ A customizable keyboard shortcut application for Windows that provides quick acc
 ## 🔧 Requirements
 
 - Windows 10/11
-- .NET 6.0 or later
+- .NET 8.0 or later
 
 ## 📥 Installation
-**Coming Soon**
-1. Download the latest release from the [Releases](https://github.com/USERNAME/ShortcutKeyboardApp/releases) page
+1. Download the latest release from the [Releases](https://github.com/bhoppe-dev/ShortcutKeyboardApp/releases/) page
 2. Extract the ZIP file
 3. Run `ShortcutKeyboardApp.exe`
 
