@@ -19,7 +19,7 @@ namespace ShortcutKeyboardApp
         /// <summary>
         /// Gets the current build type (beta, release, etc.).
         /// </summary>
-        public const string BuildType = "beta";
+        public const string BuildType = "release";
 
         /// <summary>
         /// Gets the name of the creator
